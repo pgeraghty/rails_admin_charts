@@ -2,7 +2,7 @@
 
 ## Installation
 
-In your `Gemfile`, add the following dependencies:
+In your `Gemfile`, add the following dependency:
 
     gem 'rails_admin_charts'
 
