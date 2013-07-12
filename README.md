@@ -19,7 +19,7 @@ include RailsAdminCharts
 ```
 
 This adds the methods `delta_records_since` and `total_records_since` to your model, alongside `graph_data` which utilises them.
-The data displayed in the chart can be altered by overriding the class method `graph_data` in your model, for example in the case of a User class using single table inheritance:
+The data displayed in the chart can be altered by overriding the class method `graph_data` in your model, for example in the case of a User model using single table inheritance:
 
 ```ruby
   def self.graph_data since=30.days.ago
