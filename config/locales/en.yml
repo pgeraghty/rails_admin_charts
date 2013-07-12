@@ -1,0 +1,7 @@
+en:
+  admin:
+    actions:
+      charts:
+        title: Charts
+        menu: Charts
+        breadcrumb: Charts

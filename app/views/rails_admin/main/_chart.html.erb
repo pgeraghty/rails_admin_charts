@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    $(function () {
+        var chart;
+        $(document).ready(function() {
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'growth_rate'
+                },
+                title: {
+                    text: '<%= @abstract_model.to_s.pluralize %>'
+                },
+                xAxis: {
+                    type: 'datetime'
+                },
+//                yAxis: {
+//                    title: {
+//                        text: 'Counts'
+//                    }
+//                },
+                tooltip: {
+                    formatter: function() {
+                        return ''+
+                                Highcharts.dateFormat('%e. %b', this.x) +' -> '+ this.y;
+                    }
+                },
+                plotOptions: {
+                    spline: {
+                        lineWidth: 4,
+                        states: {
+                            hover: {
+                                lineWidth: 5
+                            }
+                        },
+                        marker: {
+                            enabled: false,
+                            states: {
+                                hover: {
+                                    enabled: true,
+                                    symbol: 'circle',
+                                    radius: 5,
+                                    lineWidth: 1
+                                }
+                            }
+                        }
+                    }
+                },
+                series: <%=raw @abstract_model.model.graph_data(100.days.ago).to_json %>,
+                navigation: {
+                    menuItemStyle: {
+                        fontSize: '10px'
+                    }
+                }
+            });
+        });
+    });
+</script>
