@@ -12,6 +12,14 @@ Run:
 
 This will include the lazy_high_charts gem and add the assets to the pipeline.
 
+In your RailsAdmin initializer (`app/config/initializers/rails_admin.rb`), enable the action by adding:
+
+```ruby
+config.actions do
+  charts
+end
+```
+
 For any model where you wish to display a chart (defaults to a cumulative total showing the last 100 days), add the following just under the class declaration:
 
 ```ruby
