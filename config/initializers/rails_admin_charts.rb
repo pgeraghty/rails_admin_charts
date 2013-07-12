@@ -1,3 +1,4 @@
+require 'rails_admin/main_controller'
 module RailsAdmin
   class MainController < RailsAdmin::ApplicationController
     def charts
