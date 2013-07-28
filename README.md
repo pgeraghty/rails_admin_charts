@@ -36,13 +36,13 @@ The data displayed in the chart can be altered by overriding the class method `g
           name: 'Admin Users',
           pointInterval: point_interval = 1.day * 1000,
           pointStart: start_point = since.to_i * 1000,
-          data: self.where(user_type: 'Admin').delta_records_since(since)
+          data: self.where(type: 'Admin').delta_records_since(since)
       },
       {
           name: 'Standard Users',
           pointInterval: point_interval,
           pointStart: start_point,
-          data: self.where(user_type: nil).delta_records_since(since)
+          data: self.where(type: nil).delta_records_since(since)
       }
     ]
   end
