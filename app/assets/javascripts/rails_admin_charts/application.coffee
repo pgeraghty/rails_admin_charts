@@ -1,3 +1,3 @@
 #= require highcharts/highcharts
-#= require exporting
+#= require highcharts/modules/exporting
 # TEST LOADING
