@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '>= 3.2'
   s.add_dependency 'rails_admin', '> 0'
   s.add_dependency 'lazy_high_charts', '>= 1.4.3'
+  s.license = 'MIT'
 end
