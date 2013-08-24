@@ -17,7 +17,7 @@ module RailsAdminCharts
       (since.to_date..Date.today).map { |date| deltas[date.to_s] || 0 }
     end
 
-    def graph_data since=30.days.ago
+    def graph_data(since=30.days.ago)
       [
           {
               name: model_name.plural,
