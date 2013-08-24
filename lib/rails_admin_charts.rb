@@ -20,7 +20,7 @@ module RailsAdminCharts
     def graph_data since=30.days.ago
       [
           {
-              name: model_name.pluralize,
+              name: model_name.plural,
               pointInterval: 1.day * 1000,
               pointStart: since.to_i * 1000,
               data: self.total_records_since(since)
