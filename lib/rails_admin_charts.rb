@@ -9,12 +9,12 @@ module RailsAdminCharts
   module ClassMethods
     def total_records_since(since = 30.days.ago)
       totals, before_count = self.group('DATE(created_at)').count, self.where('created_at < ?', since.to_date).count
-      (since.to_date..Date.today).each_with_object([]) { |day, a| a << (a.last || before_count) + (totals[day] || 0) }
+      (since.to_date..Date.today).each_with_object([]) { |day, a| a << (a.last || before_count) + (totals[day.to_s] || 0) }
     end
 
     def delta_records_since(since = 30.days.ago)
       deltas = self.group('DATE(created_at)').count
-      (since.to_date..Date.today).map { |date| deltas[date] || 0 }
+      (since.to_date..Date.today).map { |date| deltas[date.to_s] || 0 }
     end
 
     def graph_data since=30.days.ago
