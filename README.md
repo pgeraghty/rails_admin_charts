@@ -10,7 +10,7 @@ Run:
 
     $ bundle install
 
-This will include the lazy_high_charts gem and add the assets to the pipeline.
+This will include the lazy_high_charts gem and add the assets to the pipeline. NB: remember to recompile assets if adding this to staging or production environments.
 
 In your RailsAdmin initializer (`app/config/initializers/rails_admin.rb`), enable the action by adding:
 
