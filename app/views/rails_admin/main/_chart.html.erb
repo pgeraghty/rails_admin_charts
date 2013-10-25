@@ -10,19 +10,23 @@
                     text: '<%= @abstract_model.to_s.pluralize %>'
                 },
                 xAxis: {
-                    type: 'datetime'
+                <% if @abstract_mode.model.xaxis == "datetime" %>
+                  type: 'datetime'
+                <% else %>
+                  categories: <%=raw @abstract_model.model.xaxis.to_json %>
+                <% end %>
                 },
 //                yAxis: {
 //                    title: {
 //                        text: 'Counts'
 //                    }
 //                },
-                tooltip: {
-                    formatter: function() {
-                        return ''+
-                                Highcharts.dateFormat('%e. %b', this.x) +' -> '+ this.y;
-                    }
-                },
+                <%#tooltip: {%>
+                    <%#formatter: function() {%>
+                        <%#return ''+%>
+                                <%#Highcharts.dateFormat('%e. %b', this.x) +' -> '+ this.y;%>
+                    <%#}%>
+                <%#},%>
                 plotOptions: {
                     spline: {
                         lineWidth: 4,

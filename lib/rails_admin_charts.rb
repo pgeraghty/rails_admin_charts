@@ -28,6 +28,10 @@ module RailsAdminCharts
           }
       ]
     end
+
+    def xaxis
+      "datetime"
+    end
   end
 end
 

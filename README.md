@@ -48,4 +48,12 @@ The data displayed in the chart can be altered by overriding the class method `g
   end
 ```
 
+You can set custom categories by overriding the method `xaxis`
+
+```ruby
+  def self.xaxis
+    ['cat a', 'cat b', 'cat c' 'cat d', 'cat e', 'cat f', 'cat g', 'cat h']
+  end
+```
+
 This project uses MIT-LICENSE.
