@@ -56,4 +56,13 @@ You can set custom categories by overriding the method `xaxis`
   end
 ```
 
+You can set label rotation by overriding the method `label_rotation`
+It expects a string `-45` or `-90`
+
+```ruby
+  def self.label_rotation
+    "-45"
+  end
+```
+
 This project uses MIT-LICENSE.

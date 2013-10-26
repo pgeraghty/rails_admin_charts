@@ -16,6 +16,15 @@
                   categories: <%=raw @abstract_model.model.xaxis.to_json %>
                 <% end %>
                 },
+
+                labels: {
+                <% if @abstract_mode.model.label_rotation == "-45" %>
+                  rotation: -45,
+                <% elsif @abstract_mode.model.label_rotation == "-90" %>
+                  rotation: -90,
+                <% end %>
+                  align: 'right'
+                },
 //                yAxis: {
 //                    title: {
 //                        text: 'Counts'
