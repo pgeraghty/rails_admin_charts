@@ -10,21 +10,22 @@
                     text: '<%= @abstract_model.to_s.pluralize %>'
                 },
                 xAxis: {
+                  labels: {
+                  <% if @abstract_model.model.label_rotation == "-45" %>
+                    rotation: -45,
+                  <% elsif @abstract_model.model.label_rotation == "-90" %>
+                    rotation: -90,
+                  <% end %>
+                  align: 'right'
+                  },
                 <% if @abstract_model.model.xaxis == "datetime" %>
                   type: 'datetime'
                 <% else %>
                   categories: <%=raw @abstract_model.model.xaxis.to_json %>
                 <% end %>
+
                 },
 
-                labels: {
-                <% if @abstract_model.model.label_rotation == "-45" %>
-                  rotation: -45,
-                <% elsif @abstract_model.model.label_rotation == "-90" %>
-                  rotation: -90,
-                <% end %>
-                  align: 'right'
-                },
 //                yAxis: {
 //                    title: {
 //                        text: 'Counts'
