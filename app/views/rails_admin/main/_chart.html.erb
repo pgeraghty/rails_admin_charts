@@ -10,7 +10,7 @@
                     text: '<%= @abstract_model.to_s.pluralize %>'
                 },
                 xAxis: {
-                <% if @abstract_mode.model.xaxis == "datetime" %>
+                <% if @abstract_model.model.xaxis == "datetime" %>
                   type: 'datetime'
                 <% else %>
                   categories: <%=raw @abstract_model.model.xaxis.to_json %>
