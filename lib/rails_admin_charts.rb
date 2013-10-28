@@ -36,6 +36,10 @@ module RailsAdminCharts
     def label_rotation
       "0"
     end
+
+    def chart_type
+      ""
+    end
   end
 end
 
