@@ -31,4 +31,5 @@ module RailsAdminCharts
   end
 end
 
+#require 'rails_admin/config/actions'
 require 'rails_admin_charts/rails_admin/config/actions/charts'
