@@ -22,7 +22,7 @@ module RailsAdmin
         end
 
         register_instance_option :link_icon do
-          'icon-bar-chart'
+          'icon-bar-chart fa fa-bar-chart-o'
         end
       end
     end
