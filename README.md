@@ -16,6 +16,7 @@ In your RailsAdmin initializer (`app/config/initializers/rails_admin.rb`), enabl
 
 ```ruby
 config.actions do
+  all # NB: comment out this line for RailsAdmin < 0.6.0
   charts
 end
 ```
