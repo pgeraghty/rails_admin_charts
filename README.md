@@ -49,4 +49,21 @@ The data displayed in the chart can be altered by overriding the class method `g
   end
 ```
 
+You can set custom categories by overriding the method `xaxis`
+
+```ruby
+  def self.xaxis
+    ['cat a', 'cat b', 'cat c' 'cat d', 'cat e', 'cat f', 'cat g', 'cat h']
+  end
+```
+
+You can set label rotation by overriding the method `label_rotation`
+It expects a string `-45` or `-90`
+
+```ruby
+  def self.label_rotation
+    "-45"
+  end
+```
+
 This project uses MIT-LICENSE.

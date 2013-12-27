@@ -28,6 +28,18 @@ module RailsAdminCharts
           }
       ]
     end
+
+    def xaxis
+      "datetime"
+    end
+
+    def label_rotation
+      "0"
+    end
+
+    def chart_type
+      ""
+    end
   end
 end
 

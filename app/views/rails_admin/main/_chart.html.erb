@@ -4,25 +4,43 @@
         $(document).ready(function() {
             chart = new Highcharts.Chart({
                 chart: {
-                    renderTo: 'growth_rate'
+                  <% if @abstract_model.model.chart_type == "column" %>
+                    type: 'column',
+                  <% end %>
+                  renderTo: 'growth_rate'
                 },
                 title: {
                     text: '<%= @abstract_model.to_s.pluralize %>'
                 },
                 xAxis: {
-                    type: 'datetime'
+                  labels: {
+                  <% if @abstract_model.model.label_rotation == "-45" %>
+                    rotation: -45,
+                  <% elsif @abstract_model.model.label_rotation == "-90" %>
+                    rotation: -90,
+                  <% end %>
+                  align: 'right'
+                  },
+                <% if @abstract_model.model.xaxis == "datetime" %>
+                  type: 'datetime'
+                <% elsif @abstract_model.model.chart_type == "pie" %>
+                <% else %>
+                  categories: <%=raw @abstract_model.model.xaxis.to_json %>
+                <% end %>
+
                 },
+
 //                yAxis: {
 //                    title: {
 //                        text: 'Counts'
 //                    }
 //                },
-                tooltip: {
-                    formatter: function() {
-                        return ''+
-                                Highcharts.dateFormat('%e. %b', this.x) +' -> '+ this.y;
-                    }
-                },
+                <%#tooltip: {%>
+                    <%#formatter: function() {%>
+                        <%#return ''+%>
+                                <%#Highcharts.dateFormat('%e. %b', this.x) +' -> '+ this.y;%>
+                    <%#}%>
+                <%#},%>
                 plotOptions: {
                     spline: {
                         lineWidth: 4,
@@ -44,7 +62,15 @@
                         }
                     }
                 },
-                series: <%=raw @abstract_model.model.graph_data(100.days.ago).to_json %>,
+                <% if @abstract_model.model.chart_type == "pie" %>
+                  series: [{
+                    type: 'pie',
+                    name: 'Number of <%= @abstract_model.to_s.pluralize %>',
+                    data: <%=raw @abstract_model.model.graph_data(100.days.ago).to_json %>
+                  }],
+                <% else %>
+                  series: <%=raw @abstract_model.model.graph_data(100.days.ago).to_json %>,
+                <% end %>
                 navigation: {
                     menuItemStyle: {
                         fontSize: '10px'
