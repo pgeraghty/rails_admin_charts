@@ -1,4 +1,4 @@
-= RailsAdminCharts
+# RailsAdminCharts
 
 ## Installation
 
