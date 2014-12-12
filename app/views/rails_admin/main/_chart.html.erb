@@ -66,10 +66,10 @@
                   series: [{
                     type: 'pie',
                     name: 'Number of <%= @abstract_model.to_s.pluralize %>',
-                    data: <%=raw @abstract_model.model.graph_data(100.days.ago).to_json %>
+                    data: <%=raw @abstract_model.model.graph_data.to_json %>
                   }],
                 <% else %>
-                  series: <%=raw @abstract_model.model.graph_data(100.days.ago).to_json %>,
+                  series: <%=raw @abstract_model.model.graph_data.to_json %>,
                 <% end %>
                 navigation: {
                     menuItemStyle: {
