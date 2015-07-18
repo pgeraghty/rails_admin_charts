@@ -19,6 +19,7 @@
                   <% elsif @abstract_model.model.label_rotation == "-90" %>
                     rotation: -90,
                   <% end %>
+                  enabled: <%= @abstract_model.model.xAxis_labels_enabled, %>
                   align: 'right'
                   },
                 <% if @abstract_model.model.xaxis == "datetime" %>
