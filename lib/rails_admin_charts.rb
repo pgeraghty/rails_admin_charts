@@ -23,26 +23,26 @@ module RailsAdminCharts
     end
 
     def graph_data(since=30.days.ago)
-      [
+      [[
           {
               name: model_name.plural,
               pointInterval: 1.day * 1000,
               pointStart: since.to_i * 1000,
               data: self.total_records_since(since)
           }
-      ]
+      ]]
     end
 
     def xaxis
-      "datetime"
+      ["datetime"]
     end
 
     def label_rotation
-      "0"
+      ["0"]
     end
 
     def chart_type
-      ""
+      [""]
     end
   end
 end

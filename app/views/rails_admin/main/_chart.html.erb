@@ -1,31 +1,37 @@
 <script type="text/javascript">
     $(function () {
+       
         var chart;
         $(document).ready(function() {
+            
             chart = new Highcharts.Chart({
                 chart: {
-                  <% if @abstract_model.model.chart_type == "column" %>
+                  <% if @abstract_model.model.chart_type[index] == "column" %>
                     type: 'column',
                   <% end %>
-                  renderTo: 'growth_rate'
+                  renderTo: "growth_rate_<%=index%>"
                 },
                 title: {
                     text: '<%= @abstract_model.to_s.pluralize %>'
                 },
                 xAxis: {
                   labels: {
-                  <% if @abstract_model.model.label_rotation == "-45" %>
+                  <% if (@abstract_model.model.label_rotation[index] && @abstract_model.model.label_rotation[index] == "-45") || (@abstract_model.model.label_rotation[0] == "-45") %>
                     rotation: -45,
-                  <% elsif @abstract_model.model.label_rotation == "-90" %>
+                  <% elsif (@abstract_model.model.label_rotation[index] && @abstract_model.model.label_rotation[index] == "-90") || (@abstract_model.model.label_rotation[0] == "-90") %>
                     rotation: -90,
                   <% end %>
                   align: 'right'
                   },
-                <% if @abstract_model.model.xaxis == "datetime" %>
+                <% if @abstract_model.model.xaxis[index] == "datetime" %>
                   type: 'datetime'
-                <% elsif @abstract_model.model.chart_type == "pie" %>
+                <% elsif @abstract_model.model.chart_type[index] == "pie" %>
                 <% else %>
-                  categories: <%=raw @abstract_model.model.xaxis.to_json %>
+                    <%if @abstract_model.model.xaxis[index]%> 
+                        categories: <%=raw @abstract_model.model.xaxis[index].to_json %>
+                     <%else%>
+                        categories: <%=raw @abstract_model.model.xaxis[0].to_json %>
+                     <%end%>
                 <% end %>
 
                 },
@@ -62,14 +68,14 @@
                         }
                     }
                 },
-                <% if @abstract_model.model.chart_type == "pie" %>
+                <% if @abstract_model.model.chart_type[index] == "pie" %>
                   series: [{
                     type: 'pie',
                     name: 'Number of <%= @abstract_model.to_s.pluralize %>',
-                    data: <%=raw @abstract_model.model.graph_data.to_json %>
+                    data: <%=raw @abstract_model.model.graph_data[index].to_json %>
                   }],
                 <% else %>
-                  series: <%=raw @abstract_model.model.graph_data.to_json %>,
+                  series: <%=raw @abstract_model.model.graph_data[index].to_json %>,
                 <% end %>
                 navigation: {
                     menuItemStyle: {
@@ -77,6 +83,8 @@
                     }
                 }
             });
+            
         });
+
     });
 </script>

@@ -1,4 +1,9 @@
 <%= javascript_include_tag 'rails_admin_charts/application' %>
-<div id="growth_rate" style="min-width: 400px; height: 400px;">
-    <%=raw render 'chart' %>
-</div>
+
+   <% @abstract_model.model.chart_type.each_with_index do |type, index|  %>
+		<div id="growth_rate_<%=index%>" style="min-width: 400px; height: 400px;">
+		    <%=raw render 'chart', index: index %>
+
+		</div>
+
+	<%end%>
