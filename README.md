@@ -21,7 +21,7 @@ config.actions do
 end
 ```
 
-For any model where you wish to display a chart (defaults to a cumulative total showing the last 100 days), add the following just under the class declaration:
+For any model where you wish to display on or more charts (defaults to a cumulative total showing the last 100 days), add the following just under the class declaration:
 
 ```ruby
 include RailsAdminCharts
@@ -32,7 +32,7 @@ The data displayed in the chart can be altered by overriding the class method `g
 
 ```ruby
   def self.graph_data since=30.days.ago
-    [
+    [[
       {
           name: 'Admin Users',
           pointInterval: point_interval = 1.day * 1000,
@@ -45,24 +45,24 @@ The data displayed in the chart can be altered by overriding the class method `g
           pointStart: start_point,
           data: self.where(type: nil).delta_records_since(since)
       }
-    ]
+    ]]
   end
 ```
 
-You can set custom categories by overriding the method `xaxis`
+You can set custom categories by overriding the method `xaxis`, this will be an array of array, each array for a chart
 
 ```ruby
   def self.xaxis
-    ['cat a', 'cat b', 'cat c' 'cat d', 'cat e', 'cat f', 'cat g', 'cat h']
+    [['cat a', 'cat b', 'cat c' 'cat d', 'cat e', 'cat f', 'cat g', 'cat h']]
   end
 ```
 
 You can set label rotation by overriding the method `label_rotation`
-It expects a string `-45` or `-90`
+It expects array of strings with values are `-45` or `-90`
 
 ```ruby
   def self.label_rotation
-    "-45"
+    ["-45"]
   end
 ```
 
